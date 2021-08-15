@@ -1,0 +1,21 @@
+.profile__subtitle {
+    display: flex;
+    align-items: flex-end;
+    max-width: 336px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    color: #ffffff;
+    margin: 7px 0 0 0;
+    padding: 0;
+}
+
+@media screen and (max-width: 767px) {
+    .profile__title {
+        font-size: 14px;
+        line-height: 17px;
+        margin: 0 0 0 0;
+    }
+}

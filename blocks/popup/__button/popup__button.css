@@ -1,0 +1,23 @@
+.popup__button {
+    display: flex;
+    max-width: 358px;
+    width: 100%;
+    background: #000000;
+    border: 0 #000000;
+    border-radius: 2px;
+    margin: 0 auto 37px;
+    transition: all 0.5s;
+    opacity: 1;
+}
+
+.popup__button:hover {
+    opacity: 0.8;
+    transition: opacity 0.4s;
+}
+
+@media screen and (max-width: 767px) {
+    .popup__button {
+        max-width: 238px;
+        margin: 0 auto 25px;
+    }
+}

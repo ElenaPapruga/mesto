@@ -1,0 +1,23 @@
+.profile__pencil {
+    border: 1px solid red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 10px;
+    /*    display: grid;
+    max-width: 880px;
+    grid-template-columns: 120px 1fr 150px;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-areas:
+        "profile__avatar profile__list profile__submit"
+        "profile__avatar profile__subtitle profile__submit";*/
+}
+
+@media screen and (max-width: 767px) {
+    .profile__pencil {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+    }
+}

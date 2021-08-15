@@ -1,0 +1,27 @@
+.profile__submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 150px;
+    width: 100%;
+    height: 50px;
+    border: 2px solid #ffffff;
+    border-radius: 2px;
+    background: rgba(0, 0, 0, 0);
+    margin: 35px 0 35px 0;
+    padding: 0;
+    opacity: 1;
+    transition: all 0.5s;
+}
+
+.profile__submit:hover {
+    opacity: 0.6;
+    transition: opacity 0.4s;
+}
+
+@media screen and (max-width: 767px) {
+    .profile__submit {
+        margin: 29px 0 0;
+        max-width: 282px;
+    }
+}

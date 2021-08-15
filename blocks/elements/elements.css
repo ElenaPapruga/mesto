@@ -1,0 +1,19 @@
+.elements {
+    display: grid;
+    max-width: 880px;
+    grid-template-columns: (3, 282px);
+    grid-template-rows: (2, 361px);
+    row-gap: 20px;
+    column-gap: 17px;
+    grid-template-areas: "element element element" "element element element";
+}
+
+@media screen and (max-width: 767px) {
+    .elements {
+        max-width: 282px;
+        grid-template-columns: (1, 282px);
+        grid-template-rows: (6, 361px);
+        row-gap: 20px;
+        grid-template-areas: "element" "element" "element" "element" "element" "element" "element";
+    }
+}
