@@ -1,4 +1,4 @@
-.profile__submit {
+.profile__add-button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,13 +14,13 @@
     transition: all 0.5s;
 }
 
-.profile__submit:hover {
+.profile__add-button:hover {
     opacity: 0.6;
     transition: opacity 0.4s;
 }
 
 @media screen and (max-width: 767px) {
-    .profile__submit {
+    .profile__add-button {
         margin: 29px 0 0;
         max-width: 282px;
     }

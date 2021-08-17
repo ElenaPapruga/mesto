@@ -1,0 +1,19 @@
+.profile__heart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 22px;
+    width: 100%;
+    max-height: 19px;
+    background: #ffffff;
+    border: 0;
+    padding: 0;
+    margin: 7px 4px 0 0;
+    opacity: 1;
+    transition: all 0.5s;
+}
+
+.profile__heart:hover {
+    opacity: 0.6;
+    transition: opacity 0.4s;
+}

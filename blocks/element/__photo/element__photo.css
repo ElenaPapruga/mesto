@@ -1,5 +1,6 @@
 .element-photo {
     display: grid;
+    object-fit: cover;
     width: 100%;
     z-index: 2;
 }

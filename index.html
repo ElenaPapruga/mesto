@@ -27,63 +27,57 @@
         <div class="profile__text">
           <div class="profile__list">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
-            <button type="button" id="profile__button" class="profile__button"><svg width="10" height="10"
-                viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M10 1.32827L2.60377 8.7666L1.28302 7.41936L8.66038 0L10 1.32827ZM0 10L1.96226 9.41177L0.584906 8.08349L0 10Z"
-                  fill="white" />
-              </svg>
-            </button>
+            <button type="button" id="profile__button" class="profile__button"><img src="./images/pencil.svg"
+                alt="Кнопка-карандаш"></button>
           </div>
           <p class="profile__subtitle">Исследователь океана</p>
         </div>
-        <button type="button" class="profile__submit profile__submit_action"><img src="./images/vector.png" alt="Плюс"
-            class="profile__vector"></button>
+        <button type="button" class="profile__add-button"><img src="./images/vector.svg" alt="Кнопка-плюс"></button>
       </section>
       <!-- 3. Блок elements -->
       <section class="elements page__elements">
-        <div class="element">
+        <article class="element">
           <img src="./images/karachaevo.jpg" alt="Карачаево-Черкесия" class="element__photo">
           <div class="element__description">
             <h2 class="element__title">Карачаево-Черкесия</h2>
-            <img src="./images/heart.png" alt="Лайк-сердце" class="element__icon element__icon_active">
+            <button type="button" class="profile__heart"><img src="./images/heart.svg" alt="Лайк-сердце"></button>
           </div>
-        </div>
-        <div class="element">
+        </article>
+        <article class="element">
           <img src="./images/elbrus.jpg" alt="Гора Эльбрус" class="element__photo">
           <div class="element__description">
             <h2 class="element__title">Гора Эльбрус</h2>
-            <img src="./images/heart.png" alt="Лайк-сердце" class="element__icon element__icon_active">
+            <button type="button" class="profile__heart"><img src="./images/heart.svg" alt="Лайк-сердце"></button>
           </div>
-        </div>
-        <div class="element">
+        </article>
+        <article class="element">
           <img src="./images/dombai.jpg" alt="Домбай" class="element__photo">
           <div class="element__description">
             <h2 class="element__title">Домбай</h2>
-            <img src="./images/heart.png" alt="Лайк-сердце" class="element__icon element__icon_active">
+            <button type="button" class="profile__heart"><img src="./images/heart.svg" alt="Лайк-сердце"></button>
           </div>
-        </div>
-        <div class="element">
+        </article>
+        <article class="element">
           <img src="./images/elbrus.jpg" alt="Гора Эльбрус" class="element__photo">
           <div class="element__description">
             <h2 class="element__title">Гора Эльбрус</h2>
-            <img src="./images/heart.png" alt="Лайк-сердце" class="element__icon element__icon_active">
+            <button type="button" class="profile__heart"><img src="./images/heart.svg" alt="Лайк-сердце"></button>
           </div>
-        </div>
-        <div class="element">
+        </article>
+        <article class="element">
           <img src="./images/dombai.jpg" alt="Домбай" class="element__photo">
           <div class="element__description">
             <h2 class="element__title">Домбай</h2>
-            <img src="./images/heart.png" alt="Лайк-сердце" class="element__icon element__icon_active">
+            <button type="button" class="profile__heart"><img src="./images/heart.svg" alt="Лайк-сердце"></button>
           </div>
-        </div>
-        <div class="element">
+        </article>
+        <article class="element">
           <img src="./images/karachaevo.jpg" alt="Карачаево-Черкесия" class="element__photo">
           <div class="element__description">
             <h2 class="element__title">Карачаево-Черкесия</h2>
-            <img src="./images/heart.png" alt="Лайк-сердце" class="element__icon element__icon_active">
+            <button type="button" class="profile__heart"><img src="./images/heart.svg" alt="Лайк-сердце"></button>
           </div>
-        </div>
+        </article>
       </section>
     </main>
   </div>
@@ -94,17 +88,14 @@
   <!-- 5. Блок popup -->
   <div class="popup">
     <div class="popup__content">
-      <button type="button" class="popup__close"><svg width="32" height="32" fill="none"
-          xmlns="http://www.w3.org/2000/svg">
-          <path d="M32 28.8L19.2 16 32 3.2 28.8 0 16 12.8 3.2 0 0 3.2 12.8 16 0 28.8 3.2 32 16 19.2 28.8 32l3.2-3.2z"
-            fill="#fff" />
-        </svg></button>
-      <h3 class="popup__title">Редактировать профиль</h3>
-      <form class="popup__form" name="form">
-        <input type="text" name="text" class="popup__field-name" required placeholder="Имя">
-        <input type="text" name="text" class="popup__field-job" required placeholder="О себе">
+      <button type="button" class="popup__close"><img src="./images/close-icon.svg" alt="Закрытие попапа"
+          class="popup__close-icon"></button>
+      <h2 class="popup__title">Редактировать профиль</h2>
+      <form class="popup__form" name="popup-form">
+        <input type="text" name="text-name" class="popup__field popup__field_name" required placeholder="Имя">
+        <input type="text" name="text-about" class="popup__field popup__field_job" required placeholder="О себе">
         <button type="submit" class="popup__button">
-          <p class="popup__button-text">Сохранить</p>
+          <span class="popup__button-text">Сохранить</span>
         </button>
       </form>
     </div>
