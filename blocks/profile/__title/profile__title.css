@@ -1,7 +1,7 @@
 .profile__title {
     display: flex;
     max-width: calc(294px + 250px);
-    font-family: Inter;
+    font-family: "Inter", "Arial", sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 42px;
@@ -9,6 +9,9 @@
     color: #ffffff;
     margin: 0;
     padding-right: 23px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 @media screen and (max-width: 767px) {

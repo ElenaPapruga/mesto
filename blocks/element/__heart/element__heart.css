@@ -1,4 +1,4 @@
-.profile__heart {
+.element__heart {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,9 +11,10 @@
     margin: 7px 4px 0 0;
     opacity: 1;
     transition: all 0.5s;
+    cursor: pointer;
 }
 
-.profile__heart:hover {
+.element__heart:hover {
     opacity: 0.6;
     transition: opacity 0.4s;
 }

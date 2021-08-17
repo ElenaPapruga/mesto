@@ -8,6 +8,7 @@
     margin: 0 auto 37px;
     transition: all 0.5s;
     opacity: 1;
+    cursor: pointer;
 }
 
 .popup__button:hover {

@@ -1,3 +1,4 @@
+// Код для попапа (не отправляет данные на сервер)
 let popup = document.querySelector('.popup');
 let editButton = document.getElementById('profile__button');
 let closePopupBotton = document.querySelector('.popup__close');
