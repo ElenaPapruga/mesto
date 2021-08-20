@@ -1,6 +1,5 @@
 .profile__title {
-    display: flex;
-    max-width: calc(294px + 250px);
+    max-width: 500px;
     font-family: "Inter", "Arial", sans-serif;
     font-style: normal;
     font-weight: 500;

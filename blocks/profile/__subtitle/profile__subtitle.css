@@ -1,7 +1,5 @@
 .profile__subtitle {
-    display: flex;
-    align-items: flex-end;
-    max-width: 336px;
+    max-width: 500px;
     font-family: "Inter", "Arial", sans-serif;
     font-style: normal;
     font-weight: normal;
@@ -19,6 +17,6 @@
     .profile__subtitle {
         font-size: 14px;
         line-height: 17px;
-        margin: 0 0 0 0;
+        margin: 5px 0 0 16px;
     }
 }

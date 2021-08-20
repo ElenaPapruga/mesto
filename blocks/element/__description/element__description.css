@@ -1,9 +1,6 @@
 .element__description {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
-    max-width: 246px;
-    margin: 25px 15px 31px 21px;
-    padding: 0;
-    text-overflow: ellipsis;
+    flex-direction: row;
+    align-items: center;
 }

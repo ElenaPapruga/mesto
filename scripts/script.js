@@ -1,20 +1,17 @@
-// Код для попапа (не отправляет данные на сервер)
+//Код для попапа (не отправляет данные на сервер)
 let popup = document.querySelector('.popup');
 let editButton = document.getElementById('profile__button');
 let closePopupBotton = document.querySelector('.popup__close');
 let form = document.querySelector('.popup__form');
-let formSubmitBotton = document.querySelector('.popup__button');
-let popupName = document.querySelector('.popup__field_name');
-let popupJob = document.querySelector('.popup__field_job');
+let popupName = document.querySelector('.popup__input_type_name');
+let popupJob = document.querySelector('.popup__input_type_job');
 let profileName = document.querySelector('.profile__title');
 let profileJob = document.querySelector('.profile__subtitle');
 
 function openPopup() {
     popup.classList.add('popup_opened');
-    form.value = profileName.textContent;
-    form.value = profileJob.textContent;
-    popupName.value = '';
-    popupJob.value = '';
+    popupName.value = profileName.textContent;
+    popupJob.value = profileJob.textContent;
 };
 
 function closePopup() {
