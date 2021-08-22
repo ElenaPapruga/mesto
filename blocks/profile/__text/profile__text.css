@@ -7,8 +7,3 @@
     margin-left: 26.25px;
     padding: 0;
 }
-
-@media screen and (max-width: 767px) {
-    .profile__text {
-    }
-}
