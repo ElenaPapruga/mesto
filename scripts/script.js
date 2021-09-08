@@ -14,7 +14,7 @@ let editProfileClosePopupButton = popupEditProfile.querySelector('.popup__close'
 let addElementClosePopupButton = popupAddElement.querySelector('.popup__close-add');
 let imageClosePopupButton = popupImage.querySelector('.element__delete-button');   /***/
 
-let elementLike = document.querySelector('.element__heart');   /***/
+let elementLike = document.querySelector('.element__heart');
 
 let profileName = document.querySelector('.profile__title');
 let profileJob = document.querySelector('.profile__subtitle');
@@ -44,7 +44,7 @@ function submitForm(event) {
     event.preventDefault();
     profileName.textContent = popupName.value;
     profileJob.textContent = popupJob.value;
-    openPopup(popupEditProfile);           /***/
+    openPopup(popupEditProfile);
 };
 
 
@@ -52,7 +52,7 @@ function submitForm(event) {
 function submitFormAdd(event) {
     event.preventDefault();
     renderCard({ name: popupPlace.value, link: popupLink.value });
-    openPopup(popupAddElement);                 /***/
+    openPopup(popupAddElement);
 };
 
 editButton.addEventListener('click', () => {
@@ -132,13 +132,13 @@ function createCard(data) {
     elementDeleteButton.addEventListener('click', (event) => {
         event.preventDefault();
         event.target.closest('.element__card').remove();
-    }); 
+    });
 
 
-    elementTitle.textContent = data.name; //обращение к имени в шаблоне
+    elementTitle.textContent = data.name;
     elementPhoto.alt = 'Фото';
-    elementPhoto.src = data.link; // тут к фото
-    elementCard.prepend(cardElement); //тут вставляешь в блок placeCards
+    elementPhoto.src = data.link;
+    elementCard.prepend(cardElement);
     return cardElement;
 }
 
