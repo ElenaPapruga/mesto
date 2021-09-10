@@ -13,8 +13,15 @@
     padding: 0;
 }
 
+@media screen and (max-width: 1023px) {
+    .popup__title {
+        max-width: 282px;
+    }
+}
+
 @media screen and (max-width: 767px) {
     .popup__title {
+        max-width: 282px;
         font-size: 18px;
         line-height: 22px;
         margin: 25px 22px 75px;
