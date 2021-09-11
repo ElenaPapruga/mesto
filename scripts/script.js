@@ -32,16 +32,19 @@ const popupModalTitle = document.querySelector('.popup__title-image');
 const elementTemplate = document.querySelector('.element-template').content.querySelector('.element__card');
 const elementCard = document.querySelector('.elements');
 
+// Открытие/закрытие попапа 
 function togglePopup(windowElement) {
-    if (!windowElement.classList.contains('popup_is')) {
-        popupPlace.value = '';
-        popupLink.value = '';
-    }
-
     windowElement.classList.toggle('popup_opened');
 }
 
 //Форма edit
+function submitFormAdd(event) {
+    event.preventDefault();
+    popupPlace.value = '';
+    popupLink.value = '';
+    togglePopup(popupEditProfile);
+}
+
 function submitFormEdit(event) {
     event.preventDefault();
     profileName.textContent = popupName.value;
@@ -59,11 +62,13 @@ function submitFormAdd(event) {
 }
 
 editButton.addEventListener('click', () => {
-    togglePopup(popupEditProfile)
+    togglePopup(popupEditProfile);
+    popupName.value = profileName.textContent;
+    popupJob.value = profileJob.textContent;
 });
 
 editProfileClosePopupButton.addEventListener('click', () => {
-    togglePopup(popupEditProfile)
+    togglePopup(popupEditProfile);
 });
 
 addButton.addEventListener('click', () => {
