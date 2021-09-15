@@ -50,11 +50,16 @@
           class="popup__close-icon"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
       <form class="popup__form" name="popup-form">
-        <input type="text" name="text-name" class="popup__input popup__input_type_name" required placeholder="Имя">
-        <input type="text" name="text-about" class="popup__input popup__input_type_job" required placeholder="О себе">
-        <button type="submit" class="popup__button">
-          <span class="popup__button-text">Сохранить</span>
-        </button>
+        <div class="popup__input-field">
+          <input type="text" id="text-name" name="text-name" class="popup__input popup__input_type_name" required
+            placeholder="Имя" minlength="2" maxlength="40"><span id="text-name-error" class="error"></span>
+        </div>
+        <div class="popup__input-field">
+          <input type="text" id="text-about" name="text-about" class="popup__input popup__input_type_job" required
+            placeholder="О себе" minlength="2" maxlength="200"><span id="ttext-about-error" class="error"></span>
+        </div>
+        <button type="submit"
+          class="button popup__button popup__button popup__button_valid popup__button_invalid">Сохранить</button>
       </form>
     </div>
   </div>
@@ -64,14 +69,18 @@
       <button type="button" class="popup__close-add"><img src="./images/close-icon.svg" alt="Закрытие попапа"
           class="popup__close-icon"></button>
       <h2 class="popup__title">Новое место</h2>
-      <form class="popup__form-add" name="popup-form-add">
-        <input type="text" name="text-place" class="popup__input popup__input_type_place" required
-          placeholder="Название">
-        <input type="url" name="text-link" class="popup__input popup__input_type_link" required
-          placeholder="Ссылка на картинку">
-        <button type="submit" class="popup__button-add">
-          <span class="popup__button-text">Сохранить</span>
-        </button>
+      <form class="popup__form popup__form-add" name="popup-form-add">
+        <div class="popup__input-field">
+          <input type="text" id="place-card" name="text-place" class="popup__input popup__input_type_place" required
+            placeholder="Название" minlength="2" maxlength="30"><span id="place-card-error" class="error">Вы пропустили
+            это поле</span>
+        </div>
+        <div class="popup__input-field">
+          <input type="url" id="link" name="text-link" class="popup__input popup__input_type_link" required
+            placeholder="Ссылка на картинку"><span id="link-error" class="error">Введите адрес сайта</span>
+        </div>
+        <button type="submit"
+          class="button popup__button popup__button-add popup__button_valid popup__button_invalid">Сохранить</button>
       </form>
     </div>
   </div>
@@ -96,6 +105,8 @@
       </div>
     </div>
   </template>
+  <script src="./scripts/validate.js"></script>
+  <script src="./scripts/index.js"></script>
   <script src="./scripts/cards.js"></script>
   <script src="./scripts/script.js"></script>
 </body>

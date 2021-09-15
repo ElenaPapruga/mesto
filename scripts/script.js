@@ -32,9 +32,19 @@ const popupModalTitle = document.querySelector('.popup__title-image');
 const elementTemplate = document.querySelector('.element-template').content.querySelector('.element__card');
 const elementCard = document.querySelector('.elements');
 
+
+
 // Открытие/закрытие попапа 
 function togglePopup(windowElement) {
     windowElement.classList.toggle('popup_opened');
+    
+    if(windowElement.classList.contains('popup_opened')){
+        windowElement.addEventListener('mousedown', function (evt) {
+            if (evt.target.classList.contains('popup_opened')) {
+                evt.target.classList.remove('popup_opened');
+            }
+        })
+    }    
 }
 
 //Форма edit
