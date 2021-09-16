@@ -1,12 +1,3 @@
-// Закрытие popup на esc
-document.addEventListener('keydown', function (event) {
-  if (event.key === 'Escape') {
-    popupEditProfile.classList.remove('popup_opened');
-    popupAddElement.classList.remove('popup_opened');
-    popupImage.classList.remove('popup_opened');
-  }
-})
-
 // Показывает элемент ошибки
 const showInputError = (inputElement, errorElement, inputErrorClass, errorClass) => {
   inputElement.classList.add(inputErrorClass);
@@ -54,9 +45,13 @@ const hasNotInvalidInput = (inputList) => {
 const disableSubmitButton = (buttonElement, inactiveButtonClass) => {
   if (inactiveButtonClass) {
     buttonElement.setAttribute('disabled', true)
+    buttonElement.classList.add('popup__button_invalid');
+    buttonElement.classList.remove('popup__button-add');
   }
 
   buttonElement.removeAttribute('disabled')
+  buttonElement.classList.remove('popup__button_invalid');
+  buttonElement.classList.add('popup__button-add');
 };
 
 // Включение кнопки submit и переключение ее состояния
@@ -65,6 +60,8 @@ const toggleButtonState = (formElement, inputList) => {
   if (hasInvalidInput(inputList)) {
     // сделай кнопку неактивной
     disableSubmitButton(buttonElement, true);
+    buttonElement.classList.add('popup__button_invalid');
+    buttonElement.classList.remove('popup__button-add');
 
   } else {
     // иначе сделай кнопку активной

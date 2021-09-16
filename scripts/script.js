@@ -32,27 +32,32 @@ const popupModalTitle = document.querySelector('.popup__title-image');
 const elementTemplate = document.querySelector('.element-template').content.querySelector('.element__card');
 const elementCard = document.querySelector('.elements');
 
-
+function closeByEsc(event) {
+    if (event.key === 'Escape') {
+        const openedPopup = document.querySelector('.popup_opened');
+        closePopup(openedPopup);
+    }
+}
 
 // Открытие/закрытие попапа 
 function togglePopup(windowElement) {
     windowElement.classList.toggle('popup_opened');
-    
-    if(windowElement.classList.contains('popup_opened')){
-        windowElement.addEventListener('mousedown', function (evt) {
-            if (evt.target.classList.contains('popup_opened')) {
-                evt.target.classList.remove('popup_opened');
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') {
+            popupEditProfile.classList.remove('popup_opened');
+            popupAddElement.classList.remove('popup_opened');
+            popupImage.classList.remove('popup_opened');
+        }
+    })
+
+    if (windowElement.classList.contains('popup_opened')) {
+        windowElement.addEventListener('mousedown', function (event) {
+            if (event.target.classList.contains('popup_opened')) {
+                event.target.classList.remove('popup_opened');
+
             }
         })
-    }    
-}
-
-//Форма edit
-function submitFormAdd(event) {
-    event.preventDefault();
-    popupPlace.value = '';
-    popupLink.value = '';
-    togglePopup(popupEditProfile);
+    }
 }
 
 function submitFormEdit(event) {
@@ -107,7 +112,7 @@ function createCard(data) {
         togglePopup(popupImage);
         popupModalImage.src = event.target.src;
         popupModalImage.alt = 'Большое фото';
-        popupModalTitle.textContent = event.target.nextElementSibling.firstElementChild.textContent;
+        popupModalTitle.textContent = data.name;
         console.log(popupModalImage.alt);
     });
 
@@ -135,3 +140,13 @@ initialCards.forEach((data) => {
     renderCard(data)
 });
 
+// включение валидации вызовом enableValidation
+// все настройки передаются при вызове
+enableValidation({
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__button',
+    inactiveButtonClass: 'popup__button_disabled',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__error_visible'
+});
