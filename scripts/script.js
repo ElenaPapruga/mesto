@@ -32,6 +32,7 @@ const popupModalTitle = document.querySelector('.popup__title-image');
 const elementTemplate = document.querySelector('.element-template').content.querySelector('.element__card');
 const elementCard = document.querySelector('.elements');
 
+// закрытие Esc
 function closeByEsc(event) {
     if (event.key === 'Escape') {
         const openedPopup = document.querySelector('.popup_opened');
@@ -39,66 +40,69 @@ function closeByEsc(event) {
     }
 }
 
-// Открытие/закрытие попапа 
-function togglePopup(windowElement) {
-    windowElement.classList.toggle('popup_opened');
-    document.addEventListener('keydown', function (event) {
-        if (event.key === 'Escape') {
-            popupEditProfile.classList.remove('popup_opened');
-            popupAddElement.classList.remove('popup_opened');
-            popupImage.classList.remove('popup_opened');
-        }
-    })
-
-    if (windowElement.classList.contains('popup_opened')) {
-        windowElement.addEventListener('mousedown', function (event) {
-            if (event.target.classList.contains('popup_opened')) {
-                event.target.classList.remove('popup_opened');
-
-            }
-        })
+// закрытие по оверлею
+function closeByOverlayClick(event) {
+    if (event.target.classList.contains('popup')) {
+        const openedPopup = document.querySelector('.popup_opened');
+        closePopup(openedPopup);
     }
 }
+
+// Открытие попапа 
+function openedPopup(popup) {
+    popup.classList.add('popup_opened');
+    document.addEventListener('keyup', closeByEsc);
+    popup.addEventListener('mousedown', closeByOverlayClick);
+}
+
+// Закрытие попапа 
+function closePopup(popup) {
+    popup.classList.remove('popup_opened');
+    document.removeEventListener('keyup', closeByEsc);
+    popup.removeEventListener('mousedown', closeByOverlayClick);
+}
+
+
 
 function submitFormEdit(event) {
     event.preventDefault();
     profileName.textContent = popupName.value;
     profileJob.textContent = popupJob.value;
-    togglePopup(popupEditProfile);
+    closePopup(popupEditProfile);
 }
 
 //Форма add
 function submitFormAdd(event) {
     event.preventDefault();
     renderCard({ name: popupPlace.value, link: popupLink.value });
-    togglePopup(popupAddElement);
+    closePopup(popupAddElement);
     popupPlace.value = '';
     popupLink.value = '';
 }
 
 editButton.addEventListener('click', () => {
-    togglePopup(popupEditProfile);
+    openedPopup(popupEditProfile);
     popupName.value = profileName.textContent;
     popupJob.value = profileJob.textContent;
 });
 
 editProfileClosePopupButton.addEventListener('click', () => {
-    togglePopup(popupEditProfile);
+    closePopup(popupEditProfile);
 });
 
 addButton.addEventListener('click', () => {
-    togglePopup(popupAddElement);
+    openedPopup(popupAddElement);
 });
 
 addElementClosePopupButton.addEventListener('click', () => {
-    togglePopup(popupAddElement);
+    closePopup(popupAddElement);
 });
 
 editForm.addEventListener('submit', submitFormEdit);
 addElementForm.addEventListener('submit', submitFormAdd);
 
 imageClosePopupButton.addEventListener('click', () => {
-    togglePopup(popupImage);
+    closePopup(popupImage);
 });
 
 function createCard(data) {
@@ -109,7 +113,7 @@ function createCard(data) {
     const elementHeart = cardElement.querySelector('.element__heart');
 
     elementPhoto.addEventListener('click', (event) => {
-        togglePopup(popupImage);
+        openedPopup(popupImage);
         popupModalImage.src = event.target.src;
         popupModalImage.alt = 'Большое фото';
         popupModalTitle.textContent = data.name;
@@ -140,13 +144,14 @@ initialCards.forEach((data) => {
     renderCard(data)
 });
 
+
 // включение валидации вызовом enableValidation
 // все настройки передаются при вызове
 enableValidation({
     formSelector: '.popup__form',
     inputSelector: '.popup__input',
     submitButtonSelector: '.popup__button',
-    inactiveButtonClass: 'popup__button_disabled',
+    inactiveButtonClass: 'popup__button_invalid',
     inputErrorClass: 'popup__input_type_error',
     errorClass: 'popup__error_visible'
 });

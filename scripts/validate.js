@@ -42,30 +42,30 @@ const hasNotInvalidInput = (inputList) => {
 };
 
 // Выключение кнопки
-const disableSubmitButton = (buttonElement, inactiveButtonClass) => {
-  if (inactiveButtonClass) {
-    buttonElement.setAttribute('disabled', true)
-    buttonElement.classList.add('popup__button_invalid');
-    buttonElement.classList.remove('popup__button-add');
+const disableSubmitButton = (buttonElement, inactiveButtonClass, inactive) => {
+  if (inactive) {
+    buttonElement.setAttribute("disabled", "disabled");
+    buttonElement.classList.add(inactiveButtonClass);
+  } else {
+    buttonElement.removeAttribute('disabled');
+    buttonElement.classList.remove(inactiveButtonClass);
   }
-
-  buttonElement.removeAttribute('disabled')
-  buttonElement.classList.remove('popup__button_invalid');
-  buttonElement.classList.add('popup__button-add');
 };
 
 // Включение кнопки submit и переключение ее состояния
 const toggleButtonState = (formElement, inputList) => {
   const buttonElement = formElement.querySelector('.button');
+  const inactiveClass = 'popup__button_invalid';
+  const inactive = true;
   if (hasInvalidInput(inputList)) {
     // сделай кнопку неактивной
-    disableSubmitButton(buttonElement, true);
-    buttonElement.classList.add('popup__button_invalid');
+    disableSubmitButton(buttonElement, inactiveClass, inactive);
+    buttonElement.classList.add(inactiveClass);
     buttonElement.classList.remove('popup__button-add');
 
   } else {
     // иначе сделай кнопку активной
-    disableSubmitButton(buttonElement, false);
+    disableSubmitButton(buttonElement, inactiveClass, !inactive);
   }
 };
 
