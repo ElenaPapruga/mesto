@@ -53,21 +53,15 @@ const disableSubmitButton = (buttonElement, inactiveButtonClass, inactive) => {
 };
 
 // Включение кнопки submit и переключение ее состояния
-const toggleButtonState = (formElement, inputList) => {
-  const buttonElement = formElement.querySelector('.button');
-  const inactiveClass = 'popup__button_invalid';
+const toggleButtonState = (formElement, inputList, submitButtonSelector, inactiveButtonClass) => {
+  const buttonElement = formElement.querySelector(`${submitButtonSelector}`);
   const inactive = true;
   if (hasInvalidInput(inputList)) {
-    // сделай кнопку неактивной
-    disableSubmitButton(buttonElement, inactiveClass, inactive);
-    buttonElement.classList.add(inactiveClass);
-    buttonElement.classList.remove('popup__button-add');
-
+    disableSubmitButton(buttonElement, inactiveButtonClass, inactive);
   } else {
-    // иначе сделай кнопку активной
-    disableSubmitButton(buttonElement, inactiveClass, !inactive);
+    disableSubmitButton(buttonElement, inactiveButtonClass, !inactive);
   }
-};
+}
 
 // Примет параметры элемент формы и добавит полям нужные обработчики (слушатель событий)
 const setEventListeners = (formElement, inputSelector, submitButtonSelector, inputErrorClass, errorClass, inactiveButtonClass) => {
