@@ -1,0 +1,16 @@
+.profile {
+    display: grid;
+    max-width: 880px;
+    grid-template-columns: 120px 1fr 150px;
+    grid-template-rows: repeat(1, 1fr);
+    grid-template-areas: "profile__avatar profile__text profile__add-button";
+}
+
+@media screen and (max-width: 767px) {
+    .profile {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+    }
+}

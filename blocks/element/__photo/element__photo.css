@@ -1,0 +1,9 @@
+.element__photo {
+    display: flex;
+    object-fit: cover;
+    max-height: 282px;
+    min-height: 282px;
+    max-width: 282px;
+    width: 100%;
+    cursor: pointer;
+}
