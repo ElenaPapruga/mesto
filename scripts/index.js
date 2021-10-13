@@ -2,20 +2,13 @@ import { initialCards } from './initialcards.js';
 import Card from './Card.js';
 import { FormValidator } from './FormValidator.js'
 
-const validationSettings = {
-    formSelector: '.popup__form',
-    inputSelector: '.popup__input',
-    submitButtonSelector: '.popup__button',
-    inactiveButtonClass: 'popup__button_invalid',
-    inputErrorClass: 'popup__input_type_error',
-    errorClass: 'popup__error_visible'
-};
 
 //Wrappers
 const popupEditProfile = document.querySelector('.popup_type_edit-profile');
 const popupAddElement = document.querySelector('.popup_type_add-element');
-const editForm = popupEditProfile.querySelector('.popup__form');
+const editForm = document.querySelector('.popup__form-edit');
 const addElementForm = document.querySelector('.popup__form-add');
+const popupImage = document.querySelector('.popup_type_image');
 
 //Buttoms and other DOM elements
 const editButton = document.getElementById('profile__button');
@@ -23,6 +16,7 @@ const addButton = document.getElementById('profile__add-button');
 
 const editProfileClosePopupButton = popupEditProfile.querySelector('.popup__close'); // Кнопка закрытия popup edit-profile
 const addElementClosePopupButton = popupAddElement.querySelector('.popup__close-add'); //Кнопка закрытия popup add-element
+const closeButton = document.querySelector('.popup__delete-button');
 
 const profileName = document.querySelector('.profile__title');
 const profileJob = document.querySelector('.profile__subtitle');
@@ -41,7 +35,7 @@ const pageElements = document.querySelector('.page__elements');
 function closeByEsc(event) {
     if (event.key === 'Escape') {
         const openedPopup = document.querySelector('.popup_opened');
-        closePopup(openedPopup);
+        togglePopup(openedPopup);
     }
 }
 
@@ -49,40 +43,38 @@ function closeByEsc(event) {
 function closeByOverlayClick(event) {
     if (event.target.classList.contains('popup')) {
         const openedPopup = document.querySelector('.popup_opened');
-        closePopup(openedPopup);
+        togglePopup(openedPopup);
     }
 }
 
-// Открытие попапа 
-function openedPopup(popup) {
-    popup.classList.add('popup_opened');
+export function togglePopup(popup) {
+    popup && popup.classList.toggle('popup_opened');
     document.addEventListener('keyup', closeByEsc);
-    popup.addEventListener('mousedown', closeByOverlayClick);
+    popup && popup.addEventListener('mousedown', closeByOverlayClick);
 }
 
-// Закрытие попапа 
-function closePopup(popup) {
-    popup.classList.remove('popup_opened');
-    document.removeEventListener('keyup', closeByEsc);
-    popup.removeEventListener('mousedown', closeByOverlayClick);
-}
+//Форма с картинкой
+closeButton.addEventListener('click', () => {
+    togglePopup(popupImage);
+});
+
 
 //Форма Edit
 function submitFormEdit(event) {
     event.preventDefault();
     profileName.textContent = popupName.value;
     profileJob.textContent = popupJob.value;
-    closePopup(popupEditProfile);
+    togglePopup(popupEditProfile);
 }
 
 editButton.addEventListener('click', () => {
-    openedPopup(popupEditProfile);
+    togglePopup(popupEditProfile);
     popupName.value = profileName.textContent;
     popupJob.value = profileJob.textContent;
 });
 
 editProfileClosePopupButton.addEventListener('click', () => {
-    closePopup(popupEditProfile);
+    togglePopup(popupEditProfile);
 });
 
 //Форма Add
@@ -93,16 +85,15 @@ const submitFormAdd = (evt) => {
         link: popupLink.value
     });
     elementCard.prepend(cardElement);
-    closePopup(popupAddElement);
-
+    togglePopup(popupAddElement);
 }
 
 addButton.addEventListener('click', () => {
-    openedPopup(popupAddElement);
+    togglePopup(popupAddElement);
 });
 
 addElementClosePopupButton.addEventListener('click', () => {
-    closePopup(popupAddElement);
+    togglePopup(popupAddElement);
 });
 
 const setFormsEventListeners = () => {
@@ -123,4 +114,16 @@ initialCards.forEach(data => {
 
 setFormsEventListeners();
 
-const formValidator = new FormValidator(validationSettings);
+const formAddValidator = new FormValidator(
+    '.popup__button-add',
+    addElementForm,
+);
+
+formAddValidator.enableValidation();
+
+const formEditValidator = new FormValidator(
+    '.popup__button-edit',
+    editForm
+);
+
+formEditValidator.enableValidation();

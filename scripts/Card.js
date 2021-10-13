@@ -1,12 +1,13 @@
+import { togglePopup } from './index.js'
+
 const popupImage = document.querySelector('.popup_type_image');
-const elementTemplateDeleteButton = document.querySelector('.popup__delete-button'); //Кнопка закрытия Template
 
 export default class Card {
     constructor(data, cardSelector) { // добавили второй параметр
         this._link = data.link;
         this._name = data.name;
         this._cardSelector = cardSelector; //  конструктор принимает два параметра — объект с данными и селектор template-элемента
-        this._elementPopupClick = new ElementclickHandler;
+        this._togglePopup = togglePopup;
     }
 
     //Приватный метод _getTemplate() научит класс Card возвращать разметку. Мы вызовем его внутри класса, чтобы получить готовую разметку перед размещением на страницу
@@ -28,10 +29,7 @@ export default class Card {
         this._element = this._getTemplate();
         this._handleHeartClick(); // добавим обработчики событий
         this._deleteSetEventListeners();
-        this._handleOpenPopup();
-        this._handleClosePopup();
-        this._handleMouseDown(popupImage);
-        this._handleKeyup();
+        this._handleCardClick();
 
         // Добавим данные       
         this._element.querySelector('.element__photo').src = this._link;
@@ -56,62 +54,16 @@ export default class Card {
     }
 
     //клик по фото
-    _handleOpenPopup() {
+    _handleCardClick() {
         this._element.querySelector('.element__photo').addEventListener('click', () => {
-            this._elementPopupClick.add(popupImage);
-            this._substitutionProps();
+            this._togglePopup(popupImage);
+            this._setImagePopupProps();
         });
     }
-
-
-    //mousedown - клик вне формы
-    _handleMouseDown(popup) {
-        popup.addEventListener('mousedown', (event) => {
-            if (event.target.classList.contains('popup')) {
-                this._elementPopupClick.remove(popup);
-            }
-        });
-    }
-
-    _handleKeyup() {
-        document.addEventListener('keyup', (event) => {
-            if (event.key === 'Escape') {
-                this._elementPopupClick.remove(popupImage);
-            }
-        });
-    }
-
-    _handleClosePopup() {
-        elementTemplateDeleteButton.addEventListener('click', () => {
-            this._elementPopupClick.remove(popupImage);
-        });
-    }
-
 
     //Подмена данных всплывающего окна
-    _substitutionProps() {
+    _setImagePopupProps() {
         document.querySelector('.popup__image').src = this._link;
         document.querySelector('.popup__title-image').textContent = this._name;
     }
-
-    //Добавление класса popup_opened
-    _elementclickHandler(elementPopup) {
-        this._elementPopupClick.toggle(elementPopup);
-    }
 }
-
-//Обработчик попапов
-class ElementclickHandler {
-    constructor(selector) {
-        this._selector = selector;
-    }
-
-    add(_selector) {
-        _selector.classList.add('popup_opened');
-    }
-
-    remove(_selector) {
-        _selector.classList.remove('popup_opened');
-    }
-}
-
