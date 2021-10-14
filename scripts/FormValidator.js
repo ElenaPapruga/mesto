@@ -1,12 +1,12 @@
 export class FormValidator {
-	constructor(submitButtonSelector, formSelector) {
-		this._formSelector = '.popup__form';
-		this._inputSelector = '.popup__input';
-		this._submitButtonSelector = document.querySelector(submitButtonSelector);
-		this._inactiveButtonClass = 'popup__button_invalid';
-		this._inputErrorClass = 'popup__input_type_error';
-		this._errorClass = 'popup__error_visible';
-		this._inputList = Array.from(formSelector);
+	constructor(validationConfig, formElement) {
+		this._formSelector = validationConfig.formSelector;
+		this._inputSelector = validationConfig.inputSelecto
+		this._submitButtonSelector = formElement.querySelector(validationConfig.submitButtonSelector);
+		this._inactiveButtonClass = validationConfig.inactiveButtonClass;
+		this._inputErrorClass = validationConfig.inputErrorClass;
+		this._errorClass = validationConfig.errorClass;
+		this._inputList = Array.from(formElement);
 	}
 
 	// Найдет и переберет все формы на странице
@@ -21,7 +21,7 @@ export class FormValidator {
 	this._inputList.forEach(inputElement => {
 		inputElement.addEventListener('input', () => {
 				this._checkInputValidity(inputElement, this._inputErrorClass, this._errorClass);
-				this._toggleButtonState(this._submitButtonSelector, this._inputList, this._inactiveButtonClass);
+				this._toggleButtonState();
 			});
 		});
 	};
@@ -62,13 +62,13 @@ export class FormValidator {
 		};
 
 		// Включение кнопки submit и переключение ее состояния
-		_toggleButtonState(buttonElement, inputList, inactiveButtonClass){
-			if (this._hasInvalidInput(inputList)) {
-				buttonElement.setAttribute("disabled", "disabled");
-				buttonElement.classList.add(inactiveButtonClass);
+		_toggleButtonState(){
+			if (this._hasInvalidInput(this._inputList)) {
+				this._submitButtonSelector.setAttribute("disabled", "disabled");
+				this._submitButtonSelector.classList.add(this._inactiveButtonClass);
 			} else {
-				buttonElement.removeAttribute('disabled');
-				buttonElement.classList.remove(inactiveButtonClass);
+				this._submitButtonSelector.removeAttribute('disabled');
+				this._submitButtonSelector.classList.remove(this._inactiveButtonClass);
 			}
 		}
 };

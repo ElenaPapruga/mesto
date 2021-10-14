@@ -1,4 +1,4 @@
-import { togglePopup } from './index.js'
+import { openedPopup } from './index.js'
 
 const popupImage = document.querySelector('.popup_type_image');
 
@@ -7,7 +7,7 @@ export default class Card {
         this._link = data.link;
         this._name = data.name;
         this._cardSelector = cardSelector; //  конструктор принимает два параметра — объект с данными и селектор template-элемента
-        this._togglePopup = togglePopup;
+        this._openedPopup = openedPopup;
     }
 
     //Приватный метод _getTemplate() научит класс Card возвращать разметку. Мы вызовем его внутри класса, чтобы получить готовую разметку перед размещением на страницу
@@ -27,9 +27,7 @@ export default class Card {
         // Запишем разметку в приватное поле _element. 
         // Так у других элементов появится доступ к ней.
         this._element = this._getTemplate();
-        this._handleHeartClick(); // добавим обработчики событий
-        this._deleteSetEventListeners();
-        this._handleCardClick();
+        this._setEventListeners();    
 
         // Добавим данные       
         this._element.querySelector('.element__photo').src = this._link;
@@ -39,6 +37,11 @@ export default class Card {
         return this._element;
     }
 
+    _setEventListeners() {
+        this._handleHeartClick();
+        this._deleteSetEventListeners();
+        this._handleCardClick();
+    }
     // Удаление карточки
     _deleteSetEventListeners() {
         this._element.querySelector('.element__delete-button').addEventListener('click', function (event) {
@@ -56,7 +59,7 @@ export default class Card {
     //клик по фото
     _handleCardClick() {
         this._element.querySelector('.element__photo').addEventListener('click', () => {
-            this._togglePopup(popupImage);
+            this._openedPopup(popupImage);
             this._setImagePopupProps();
         });
     }
