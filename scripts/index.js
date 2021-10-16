@@ -31,6 +31,15 @@ const elementCard = document.querySelector('.elements');
 
 const pageElements = document.querySelector('.page__elements');
 
+const popupSettings = {
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__button-add',
+    inactiveButtonClass: 'popup__button_invalid',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__error_visible'
+};
+
 // закрытие Esc
 function closeByEsc(event) {
     if (event.key === 'Escape') {
@@ -91,11 +100,12 @@ const submitFormAdd = (evt) => {
         name: popupPlace.value,
         link: popupLink.value
     });
-    
+
     popupPlace.value = '';
     popupLink.value = '';
 
     elementCard.prepend(cardElement);
+    this._submitButtonSelector.setAttribute("disabled", "disabled");
     closePopup(popupAddElement);
 }
 
@@ -125,30 +135,10 @@ initialCards.forEach(data => {
 
 setFormsEventListeners();
 
-const formAddValidator = new FormValidator(
-    {
-        formSelector: '.popup__form',
-        inputSelector: '.popup__input',
-        submitButtonSelector: '.popup__button-add',
-        inactiveButtonClass: 'popup__button_invalid',
-        inputErrorClass: 'popup__input_type_error',
-        errorClass: 'popup__error_visible'
-    },
-    addElementForm,
-);
+const formAddValidator = new FormValidator(popupSettings, addElementForm);
 
 formAddValidator.enableValidation();
 
-const formEditValidator = new FormValidator(
-    {
-        formSelector: '.popup__form',
-        inputSelector: '.popup__input',
-        submitButtonSelector: '.popup__button-edit',
-        inactiveButtonClass: 'popup__button_invalid',
-        inputErrorClass: 'popup__input_type_error',
-        errorClass: 'popup__error_visible'
-    },
-    editForm
-);
+const formEditValidator = new FormValidator(popupSettings, editForm);
 
 formEditValidator.enableValidation();
