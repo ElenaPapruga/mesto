@@ -31,6 +31,8 @@ const elementCard = document.querySelector('.elements');
 
 const pageElements = document.querySelector('.page__elements');
 
+const popupButtonSelectorAdd = '.popup__button-add';
+
 const popupSettings = {
     formSelector: '.popup__form',
     inputSelector: '.popup__input',
@@ -94,8 +96,8 @@ editProfileClosePopupButton.addEventListener('click', () => {
 });
 
 //Форма Add
-const submitFormAdd = (evt) => {
-    evt.preventDefault();
+const submitFormAdd = (event) => {
+    event.preventDefault();
     const cardElement = renderCard({
         name: popupPlace.value,
         link: popupLink.value
@@ -105,12 +107,13 @@ const submitFormAdd = (evt) => {
     popupLink.value = '';
 
     elementCard.prepend(cardElement);
-    this._submitButtonSelector.setAttribute("disabled", "disabled");
     closePopup(popupAddElement);
+    //Устранила ошибку. Код написан в другом месте
 }
 
 addButton.addEventListener('click', () => {
     openedPopup(popupAddElement);
+    formAddValidator.buttonDisabled();
 });
 
 addElementClosePopupButton.addEventListener('click', () => {

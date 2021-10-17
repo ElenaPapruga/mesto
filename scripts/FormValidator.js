@@ -13,6 +13,11 @@ export class FormValidator {
 	enableValidation(){
 		this._setEventListeners();
 	};
+
+	buttonDisabled(){
+		this._submitButtonSelector.setAttribute("disabled", "disabled");
+		this._submitButtonSelector.classList.add(this._inactiveButtonClass);
+	}
 			
 	// Примет параметры элемент формы и добавит полям нужные обработчики (слушатель событий)
 	_setEventListeners(){
@@ -64,8 +69,7 @@ export class FormValidator {
 		// Включение кнопки submit и переключение ее состояния
 		_toggleButtonState(){
 			if (this._hasInvalidInput(this._inputList)) {
-				this._submitButtonSelector.setAttribute("disabled", "disabled");
-				this._submitButtonSelector.classList.add(this._inactiveButtonClass);
+				this.buttonDisabled();				
 			} else {
 				this._submitButtonSelector.removeAttribute('disabled');
 				this._submitButtonSelector.classList.remove(this._inactiveButtonClass);
