@@ -32,11 +32,11 @@ const elementCard = document.querySelector('.elements');
 const pageElements = document.querySelector('.page__elements');
 
 const popupButtonSelectorAdd = '.popup__button-add';
+const popupButtonSelectorEdit = '.popup__button-edit';
 
 const popupSettings = {
     formSelector: '.popup__form',
     inputSelector: '.popup__input',
-    submitButtonSelector: '.popup__button-add',
     inactiveButtonClass: 'popup__button_invalid',
     inputErrorClass: 'popup__input_type_error',
     errorClass: 'popup__error_visible'
@@ -138,10 +138,10 @@ initialCards.forEach(data => {
 
 setFormsEventListeners();
 
-const formAddValidator = new FormValidator(popupSettings, addElementForm);
+const formAddValidator = new FormValidator(popupSettings, addElementForm, popupButtonSelectorAdd);
 
 formAddValidator.enableValidation();
 
-const formEditValidator = new FormValidator(popupSettings, editForm);
+const formEditValidator = new FormValidator(popupSettings, editForm, popupButtonSelectorEdit);
 
 formEditValidator.enableValidation();
