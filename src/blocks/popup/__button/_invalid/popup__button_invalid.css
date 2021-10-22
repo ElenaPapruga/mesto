@@ -1,0 +1,29 @@
+.popup__button_invalid {
+    display: flex;
+    width: 358px;
+    height: 50.15px;
+    background: #e5e5e5;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    border-radius: 2px;
+    margin: 0 auto 37px;
+    transition: all 0.5s;
+    opacity: 1;
+    cursor: pointer;
+    text-align: center;
+    color: #000000;
+    font-family: "Inter", "Arial", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    justify-content: center;
+    padding-top: 13px;
+}
+
+@media screen and (max-width: 767px) {
+    .popup__button_invalid {
+        width: 238px;
+        margin: 0 auto 25px;
+    }
+}

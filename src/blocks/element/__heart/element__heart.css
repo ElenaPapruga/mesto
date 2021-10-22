@@ -1,0 +1,23 @@
+.element__heart {
+    display: flex;
+    background: center center no-repeat url(../../../images/heart.svg);
+    max-width: 22px;
+    width: 100%;
+    height: 19px;
+    border: 0;
+    margin: 29px 20px 26px auto;
+    padding: 0;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.element__heart:hover {
+    opacity: 0.5;
+    transition: opacity 0.4s;
+}
+
+@media screen and (max-width: 767px) {
+    .element__heart {
+        margin: 25px 20px 31px auto;
+    }
+}
