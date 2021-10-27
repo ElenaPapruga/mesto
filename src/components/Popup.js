@@ -6,36 +6,41 @@ export class Popup {
         this._handleKeydownClose = this._handleKeydownClose.bind(this);
     }
 
-    _handleClickClose(evt) {
-        if (evt.target.classList.contains('popup__close-button') || evt.target.classList.contains('popup')) {
+
+    _handleKeydownClose(event) {
+        if (event.key === 'Escape') {
             this.close();
         }
     }
 
-    _handleKeydownClose(evt) {
-        if (evt.key === 'Escape') {
+    _handleClickClose(event) {
+        console.log(event.target)
+        console.log(event.currentTarget)
+        if (event.target === event.currentTarget) {
             this.close();
         }
     }
 
     setEventListeners() {
         this._popupElement.addEventListener('click', this._handleClickClose);
-        document.addEventListener('keydown', this._handleKeydownClose);
+        //document.addEventListener('keydown', this._handleKeydownClose); 
     }
 
     _removeEventListeners() {
         this._popupElement.removeEventListener('click', this._handleClickClose);
-        document.removeEventListener('keydown', this._handleKeydownClose);
+        //document.removeEventListener('keydown', this._handleKeydownClose); 
     }
 
     open() {
-        this.setEventListeners();
+        // this.setEventListeners();  // перенесите вызов этой функции для каждого попапа в index.js в глобальный скоуп.
         this._popupElement.classList.add('popup_opened');
+        document.addEventListener('keydown', this._handleKeydownClose);  //добавила
     }
 
     close() {
-        this._removeEventListeners();
+        //this._removeEventListeners();
         this._popupElement.classList.remove('popup_opened');
+        document.removeEventListener('keydown', this._handleKeydownClose);  //добавила
     }
 }
 

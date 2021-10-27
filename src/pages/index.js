@@ -29,10 +29,12 @@ import { popupButtonSelectorEdit } from '../utils/constants.js';
 import { popupPhotosSelector } from '../utils/constants.js';
 import { popupSettings } from '../utils/constants.js';
 
-
 const userInfo = new UserInfo({ profileName, profileJob });
 
 const photoPopup = new PopupWithImage(popupPhotosSelector);
+
+
+photoPopup.setEventListeners();  //добавила из popup
 
 const createCard = (data) => {
     const card = new Card(data, '.element-template_type_default', {
@@ -58,16 +60,19 @@ const popupWithAddForm = new PopupWithForm('.popup_type_add-element', {
         const card = createCard(data);
         const cardElement = card.generateCard();
         cardsList.addItem(cardElement, 'prepend');
-        popupWithAddForm.close()
+        //popupWithAddForm.close()
     }
 })
 
 const popupWithInfoForm = new PopupWithForm('.popup_type_edit-profile', {
     submit: (data) => {
         userInfo.setUserInfo(data);
-        popupWithInfoForm.close();
+        //popupWithInfoForm.close();
     }
 })
+
+popupWithAddForm.setEventListeners();  //добавила из popup
+popupWithInfoForm.setEventListeners();  //добавила из popup
 
 addButton.addEventListener('click', () => {
     popupWithAddForm.open();
@@ -109,31 +114,20 @@ popupButtonSelectorEdit.addEventListener('click', (event) => {
 //Форма Add
 const submitFormAdd = (event) => {
     event.preventDefault();
-    const cardElement = new Section({
-        items: [{
-            name: popupPlace.value,
-            link: popupLink.value
-        }],
-        renderer: (data) => {
-            const card = createCard(data)
-            const cardElement = card.generateCard();
-            cardsList.addItem(cardElement);
-        },
-    },
-        elementCard);
 
-    popupPlace.value = '';
-    popupLink.value = '';
+    const card = createCard({
+        name: popupPlace.value,
+        link: popupLink.value
+    });
 
-    cardElement.renderItems();
+    const cardElement = card.generateCard();
+    cardsList.addItem(cardElement, 'prepend');
     popupWithAddForm.close();
 }
 
 popupButtonSelectorAdd.addEventListener('click', (event) => {
     submitFormAdd(event)
 });
-
-
 
 const setFormsEventListeners = () => {
     editForm.addEventListener('submit', submitFormEdit);
@@ -149,6 +143,10 @@ formAddValidator.enableValidation();
 const formEditValidator = new FormValidator(popupSettings, editForm, popupButtonSelectorEdit);
 
 formEditValidator.enableValidation();
+
+
+
+
 
 
 

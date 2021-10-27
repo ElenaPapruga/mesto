@@ -6,24 +6,17 @@ export class Card {
         this._handleCardClick = handleCardClick.handleCardClick;
     }
 
-    
+
     _getTemplate() {
         const cardElement = document.querySelector(this._cardSelector).content.firstElementChild.cloneNode(true);
         return cardElement;
     }
-
-    //     _setEventListeners() {
-    //         this._handleHeartClick();
-    //         this._deleteSetEventListeners();
-    //         this._handleCardClick();
-    //     }
 
 
     _setEventListeners() {
         // при сабмите формы
         this._element.addEventListener('submit', (event) => {
             // отменим стандартное поведение
-            event.preventDefault();
 
             // и сбросим её поля
             this._element.reset();
@@ -35,6 +28,9 @@ export class Card {
         // Запишем разметку в приватное поле _element. 
         // Так у других элементов появится доступ к ней.
         this._element = this._getTemplate();
+        this._handleHeartClick();
+        this._deleteSetEventListeners();
+        this._handleCardClickImage();
         this._setEventListeners();
 
         // Добавим данные       
@@ -45,25 +41,6 @@ export class Card {
         return this._element;
     }
 
-//     //Приватный метод _getTemplate() научит класс Card возвращать разметку. Мы вызовем его внутри класса, чтобы получить готовую разметку перед размещением на страницу
-//     _getTemplate() {
-//         // здесь выполним все необходимые операции, чтобы вернуть разметку
-//         // забираем разметку из HTML и клонируем элемент
-//         // Задача метода _getTemplate — вернуть разметку карточки через return
-
-//         const cardElement = document.querySelector(this._cardSelector).content.querySelector('.element__card').cloneNode(true);
-
-//         // вернём DOM-элемент карточки
-//         return cardElement;
-//     }
-
-
-
-    _setEventListeners() {
-        this._handleHeartClick();
-        this._deleteSetEventListeners();
-        this._handleCardClickImage();
-    }
     // Удаление карточки
     _deleteSetEventListeners() {
         this._element.querySelector('.element__delete-button').addEventListener('click', function (event) {
