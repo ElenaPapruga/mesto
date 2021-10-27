@@ -14,8 +14,6 @@ export class Popup {
     }
 
     _handleClickClose(event) {
-        console.log(event.target)
-        console.log(event.currentTarget)
         if (event.target === event.currentTarget) {
             this.close();
         }
@@ -23,24 +21,22 @@ export class Popup {
 
     setEventListeners() {
         this._popupElement.addEventListener('click', this._handleClickClose);
-        //document.addEventListener('keydown', this._handleKeydownClose); 
+
     }
 
     _removeEventListeners() {
         this._popupElement.removeEventListener('click', this._handleClickClose);
-        //document.removeEventListener('keydown', this._handleKeydownClose); 
+
     }
 
     open() {
-        // this.setEventListeners();  // перенесите вызов этой функции для каждого попапа в index.js в глобальный скоуп.
         this._popupElement.classList.add('popup_opened');
-        document.addEventListener('keydown', this._handleKeydownClose);  //добавила
+        document.addEventListener('keydown', this._handleKeydownClose);
     }
 
     close() {
-        //this._removeEventListeners();
         this._popupElement.classList.remove('popup_opened');
-        document.removeEventListener('keydown', this._handleKeydownClose);  //добавила
+        document.removeEventListener('keydown', this._handleKeydownClose);
     }
 }
 

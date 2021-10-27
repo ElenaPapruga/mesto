@@ -34,7 +34,7 @@ const userInfo = new UserInfo({ profileName, profileJob });
 const photoPopup = new PopupWithImage(popupPhotosSelector);
 
 
-photoPopup.setEventListeners();  //добавила из popup
+photoPopup.setEventListeners();
 
 const createCard = (data) => {
     const card = new Card(data, '.element-template_type_default', {
@@ -60,19 +60,17 @@ const popupWithAddForm = new PopupWithForm('.popup_type_add-element', {
         const card = createCard(data);
         const cardElement = card.generateCard();
         cardsList.addItem(cardElement, 'prepend');
-        //popupWithAddForm.close()
     }
 })
 
 const popupWithInfoForm = new PopupWithForm('.popup_type_edit-profile', {
     submit: (data) => {
         userInfo.setUserInfo(data);
-        //popupWithInfoForm.close();
     }
 })
 
-popupWithAddForm.setEventListeners();  //добавила из popup
-popupWithInfoForm.setEventListeners();  //добавила из popup
+popupWithAddForm.setEventListeners();
+popupWithInfoForm.setEventListeners();
 
 addButton.addEventListener('click', () => {
     popupWithAddForm.open();
