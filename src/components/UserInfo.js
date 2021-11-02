@@ -1,22 +1,31 @@
 export class UserInfo {
     constructor(userSelector) {
-        this._name = userSelector.profileName.textContent;
-        this._caption = userSelector.profileJob.textContent
+        this.name = userSelector.name;
+        this.about = userSelector.about;
+        this.avatar = userSelector.avatar;
     }
     //UserInfo отвечает за управление отображением информации о пользователе на странице 
-    
+
     //getUserInfo - возвращает объект с данными пользователя
     getUserInfo() {
         const data = {
-            name: this._name,
-            caption: this._caption
+            name: this.name,
+            about: this.about,
+            avatar: this.avatar
         };
         return data;
     }
 
     //setUserInfo - принимает новые данные пользователя и добавляет их на страницу
     setUserInfo(data) {
-        this._name = data.name;
-        this._caption = data.caption;
+        this.name = data.name;
+        this.about = data.about;
+    }
+
+    setUserAvatar(link) { 
+        this._avatar.src = link; 
+    }
+    setUserId(id) { 
+        this._userId = id; 
     }
 }

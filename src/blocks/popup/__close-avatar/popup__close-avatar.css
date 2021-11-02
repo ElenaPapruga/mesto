@@ -1,4 +1,4 @@
-.popup__close-add {
+.popup__close-avatar {
     position: absolute;
     max-width: 32px;
     width: 100%;
@@ -11,13 +11,13 @@
     cursor: pointer;
 }
 
-.popup__close-add:hover {
+.popup__close-avatar:hover {
     opacity: 0.6;
     transition: opacity 0.4s;
 }
 
 @media screen and (max-width: 767px) {
-    .popup__close-add {
+    .popup__close-avatar {
         max-width: 20px;
         max-height: 20px;
         top: -39px;

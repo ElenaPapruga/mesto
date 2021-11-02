@@ -5,6 +5,7 @@
 Сайт отображается в браузерах - Firefox, Google Chrome, Yandex Browser.
 Сайт имеет одну главную страницу. 
 В работе применены расширенные возможности HTML, CSS, JavaScript, git, Webpack.
+В Проекте 9 работа Mesto подключена к серверу.
 
 При помощи JS реализовано:
 * 6 инициализирующих карточек.
@@ -48,8 +49,9 @@ CSS
 * Контент на странице отцентрован.
 * Не используется !important.
 * Используется главный шрифт Inter, а также вспомогательные: Arial, sans-serif. Размеры, начертания и цвет шрифта, как в макете.
-[Ссылка на макет1 в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
-[Ссылка на макет2 в Figma](https://www.figma.com/file/bjyvbKKJN2naO0ucURl2Z0/JavaScript.-Sprint-5?node-id=0%3A1)
+[Ссылка на макет1 в Figma (для Проекта 4)](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
+[Ссылка на макет2 в Figma (для Проекта 5)](https://www.figma.com/file/bjyvbKKJN2naO0ucURl2Z0/JavaScript.-Sprint-5?node-id=0%3A1)
+[Ссылка на макет3 в Figma (для Проекта 9)](https://www.figma.com/file/PSdQFRHoxXJFs2FH8IXViF/JavaScript.-Sprint-9?node-id=0%3A1)
 * Для каждого шрифта указаны альтернативные варианты из системных шрифтов. Не подключены лишние шрифты, в папке fonts не лежат лишние шрифты.
 * Внутренние отступы для каждой секции задаются отдельно, а не используются отрицательные margin
 * Ни одному текстовому блоку не задана фиксированная высота. Блок растягивается, если в него вставляют в 2—3 раза больше текста.
@@ -64,8 +66,13 @@ CSS
 * JavaScript (Asynchronous JS, OOP, validation)
 * Webpack
 
-## Чек-лист от Яндекс.Практикума
+## Чек-листы от Яндекс.Практикума
+* [Чек-лист 4](https://code.s3.yandex.net/web-developer/checklists/new-program/checklist-4/index.html) 
+* [Чек-лист 5](https://code.s3.yandex.net/web-developer/checklists/new-program/checklist-5/index.html) 
+* [Чек-лист 6](https://code.s3.yandex.net/web-developer/checklists/new-program/checklist-6/index.html) 
+* [Чек-лист 7](https://code.s3.yandex.net/web-developer/checklists/new-program/checklist-7/index.html) 
 * [Чек-лист 8](https://code.s3.yandex.net/web-developer/checklists/new-program/checklist-8/index.html) 
+* [Чек-лист 9](https://code.s3.yandex.net/web-developer/checklists/new-program/checklist-9/index.html) 
 
 ## Планы по доработке
 В планах доработать и улучшить сайт при помощи отработки навыков по применению JS. Работа с API. Перенос кода на библиотеку Reactjs.

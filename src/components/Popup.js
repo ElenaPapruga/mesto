@@ -1,11 +1,11 @@
 export class Popup {
-    constructor(popupSelector) {
+    constructor(popupSelector, api) {
         this._popupSelector = popupSelector;
+        this._api = api;
         this._popupElement = document.querySelector(this._popupSelector);
         this._handleClickClose = this._handleClickClose.bind(this);
         this._handleKeydownClose = this._handleKeydownClose.bind(this);
     }
-
 
     _handleKeydownClose(event) {
         if (event.key === 'Escape') {
@@ -21,7 +21,6 @@ export class Popup {
 
     setEventListeners() {
         this._popupElement.addEventListener('click', this._handleClickClose);
-
     }
 
     _removeEventListeners() {
@@ -39,12 +38,6 @@ export class Popup {
         document.removeEventListener('keydown', this._handleKeydownClose);
     }
 }
-
-
-
-
-
-
 
 
 

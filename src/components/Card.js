@@ -12,11 +12,16 @@ export class Card {
         return cardElement;
     }
 
-    _setEventListeners() {
-        this._element.querySelector('.element__heart').addEventListener('click', () => this._handleHeartClick());
-        this._element.querySelector('.element__photo').addEventListener('click', () => this._handleCardClick());
-    }
 
+    _setEventListeners() {
+        // при сабмите формы
+        this._element.addEventListener('submit', (event) => {
+            // отменим стандартное поведение
+
+            // и сбросим её поля
+            this._element.reset();
+        })
+    }
 
     //Публичный метод generateCard() подготовливает карточку к публикации. Он добавит данные в разметку и управляет поведением карточек
     generateCard() {
