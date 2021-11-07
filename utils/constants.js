@@ -18,6 +18,7 @@ export const likeCard = (card) => {
     const action = likeState ? 'удалить' : 'поставить';
     const likeFunc = likeState ? id => api.unlikeCard(id) : id => api.likeCard(id);
 };
+
 //Wrappers
 export const popupEditProfile = document.querySelector('.popup_type_edit-profile');
 export const popupAddElement = document.querySelector('.popup_type_add-element');
@@ -32,6 +33,8 @@ export const avatarElementForm = document.querySelector('.popup__form-avatar');
 export const editButton = document.getElementById('profile__button');
 export const addButton = document.getElementById('profile__add-button');
 export const avatarButton = document.getElementById('profile__avatar-btn');
+
+export const deleteCardButton = document.querySelector('.element__delete-button');
 
 
 export const editProfileClosePopupButton = popupEditProfile.querySelector('.popup__close'); // Кнопка закрытия popup edit-profile

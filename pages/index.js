@@ -76,7 +76,8 @@ api.getInitialCards()
         cardsArr = data.map(serverItem => {
             return {
                 name: serverItem.name,
-                link: serverItem.link
+                link: serverItem.link,
+                likes: serverItem.likes
             };
         })
 
@@ -104,38 +105,6 @@ api.getInitialCards()
         cardsArr = initialCards;
     });
 
-// const createCard = (param) => {
-//     const card = new Card({
-//         data,
-//         currentUserId: userId,
-//         templateSelector: placesConfig.templateSelector,
-//         handleLike: (card) => {
-//             api
-//                 .updateCardLike(card.getId(), !card.isLiked())
-//                 .then(data => card.setLikes(data.likes))
-//                 .catch(err => console.log(`Не удалось изменить состояние лайка карточки. Ошибка: ${err}`))
-//         },
-//         handleRemove: (card) => {
-//             removeCardPopup.open()
-//             removeCardPopup.setSubmitHandler(() => {
-//                 renderLoading(removeCardPopup, true, 'Да', 'Удаление...')
-
-//                 api
-//                     .removeCard(card.getId())
-//                     .then(() => {
-//                         card.remove()
-//                         removeCardPopup.close()
-//                     })
-//                     .catch(err => console.log(`Не удалось удалить карточку: ${err}`))
-//                     .finally(() => {
-//                         renderLoading(removeCardPopup, false, 'Да', 'Удаление...')
-//                     })
-//             })
-//         },
-//     })
-
-//     cardsArr = initialCards;
-// }
 
 const renderLoading = (popup, isLoading = false, title = 'Сохранить', loadingTitle = 'Загрузка...') => {
     const button = popup.querySelector('.popup__button')
@@ -268,3 +237,4 @@ formEditValidator.enableValidation();
 // Валидация формы добавления фото нового автара
 const formAvatarValidator = new FormValidator(popupSettings, avatarElementForm, popupButtonSelectorAvatar);
 formAvatarValidator.enableValidation();
+

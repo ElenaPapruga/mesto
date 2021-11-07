@@ -3,11 +3,12 @@ export class Card {
         this._link = data.link;
         this._name = data.name;
         this._id = data._id;
-        this._likes = data.likes;
+        this._likes = data.likes.length;
         this._currentUserId = data.currentUserId;
         this._ownerId = data.ownerId;
         this._cardSelector = cardSelector;
         this._handleCardClick = handleCardClick.handleCardClick;
+        console.log(this._likes)
     }
 
     _getTemplate() {
@@ -15,11 +16,10 @@ export class Card {
         return cardElement;
     }
 
-    // Удаление карточки
-    _deleteSetEventListeners() {
-        this._element.querySelector('.element__delete-button').addEventListener('click', function (event) {
-            event.target.closest('.element__card').remove();
-        });
+    _setEventListeners() {
+        this._element.addEventListener('submit', (event) => {
+            this._element.reset();
+        })
     }
 
     //Лайк
@@ -38,16 +38,14 @@ export class Card {
     }
 
     _updateLikes() {
-        if (this.isLiked()) {
-            this._likeButtonElement.classList.add('element__heart_active');
-        } else {
-            this._likeButtonElement.classList.remove('element__heart_active');
-        }
+        this._element.querySelector('.element__heart-number').textContent = this._likes;
+        console.log(this._element.querySelector('.element__heart').textContent)
     }
 
     setLikes(likes) {
         this._likes = likes;
         this._updateLikes();
+        this._element.querySelector('.element__heart-number').textContent = String(this._likes.length);
     }
 
     remove() {
@@ -67,34 +65,19 @@ export class Card {
         });
     }
 
-    _setEventListeners() {
-        this._element.addEventListener('submit', (event) => {
-            this._element.reset();
-        })
-    }
-
-    // _toggleButton() {
-    //     if (this._currentUserId !== this._ownerId) {
-    //         this._element.querySelector('.element__delete-button').style.display = 'none';
-    //     }
-    // }
-
     //метод generateCard() подготовливает карточку к публикации. Он добавит данные в разметку и управляет поведением карточек
     generateCard() {
         this._element = this._getTemplate();
         this._handleHeartClick();
-        this._deleteSetEventListeners();
         this._handleCardClickImage();
         this._setEventListeners();
-        this._toggleButton();
         this._element.querySelector('.element__delete-button').classList.add(
             this._currentUserId === this._ownerId ? 'element__delete-button_visible' : 'element__delete-button_hidden'
         )
-        // this._updateLikes();
+        this._updateLikes();
 
-
-        // this._element.querySelector('.element__heart-number').textContent = this._likes.length;
         this._likeButtonElement = this._element.querySelector('.element__heart');
+
         this._element.querySelector('.element__photo').src = this._link;
         this._element.querySelector('.element__photo').alt = this._name;
         this._element.querySelector('.element__title').textContent = this._name;

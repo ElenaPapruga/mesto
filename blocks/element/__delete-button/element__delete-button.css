@@ -1,5 +1,5 @@
 .element__delete-button {
-    display: element__delete-button flex;
+    display: flex;
     position: absolute;
     background: no-repeat url(../../../images/card-close.svg);
     width: 22px;
