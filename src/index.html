@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ru">
+<!-- Голова -->
+<!-- <cd c:/praktikum/project8/03.11.2021>
+  <npm run dev> -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Место</title>
+  <!-- <link rel="stylesheet" href="./pages/index.css"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Проект-9 Елены Папруги">
+  <meta name="keywords" content="html, css, js">
+  <meta name="author" content="Елена Папруга">
+</head>
+<!-- Тело -->
+
+<body class="page">
+  <div class="page__container">
+    <!-- 1. Блок header -->
+    <header class="header page__header">
+      <img src="<%=require('./images/logo.svg')%>" alt="Логотип" class="header__logo">
+    </header>
+    <main>
+      <!-- 2. Блок profile -->
+      <section class="profile page__profile">
+        <button type="button" class="profile__avatar-btn" id="profile__avatar-btn">
+          <img src="#" alt="" class="profile__avatar">
+
+        </button>
+        <div class="profile__text">
+          <div class="profile__list">
+            <h1 class="profile__title"></h1>
+            <button type="button" id="profile__button" class="profile__button"></button>
+          </div>
+          <p class="profile__subtitle"></p>
+        </div>
+        <button type="button" id="profile__add-button" class="profile__add-button"></button>
+      </section>
+      <!-- 3. Блок elements -->
+      <section class="elements page__elements">
+
+      </section>
+    </main>
+  </div>
+  <!-- 4. Блок footer -->
+  <footer class="footer page__footer">
+    <p class="footer__copyright"> &copy; 2021 Mesto Russia</p>
+  </footer>
+  <!-- 5. Блок popup edit-profile -->
+  <div class="popup popup_type_edit-profile">
+    <div class="popup__content">
+      <button type="button" class="popup__close"><img src="<%=require('./images/close-icon.svg')%>"
+          alt="Закрытие попапа" class="popup__close-icon"></button>
+      <h2 class="popup__title">Редактировать профиль</h2>
+      <form class="popup__form popup__form-edit" name="popup-form">
+        <div class="popup__input-field">
+          <input type="text" id="text-name" name="text-name" class="popup__input popup__input_type_name" required
+            placeholder="Имя" minlength="2" maxlength="40"><span id="text-name-error" class="error"></span>
+        </div>
+        <div class="popup__input-field">
+          <input type="text" id="text-about" name="text-about" class="popup__input popup__input_type_job" required
+            placeholder="О себе" minlength="2" maxlength="200"><span id="text-about-error" class="error"></span>
+        </div>
+        <button type="submit" class="button popup__button popup__button-edit popup__button_valid">Сохранить</button>
+      </form>
+    </div>
+  </div>
+  <!-- 5. Блок popup add-element -->
+  <div class="popup popup_type_add-element">
+    <div class="popup__content-add">
+      <button type="button" class="popup__close-add"><img src="<%=require('./images/close-icon.svg')%>"
+          alt="Закрытие попапа" class="popup__close-icon"></button>
+      <h2 class="popup__title">Новое место</h2>
+      <form class="popup__form popup__form-add" name="popup-form-add">
+        <div class="popup__input-field">
+          <input type="text" id="place-card" name="text-place" class="popup__input popup__input_type_place" required
+            placeholder="Название" minlength="2" maxlength="30"><span id="place-card-error" class="error">Вы пропустили
+            это поле</span>
+        </div>
+        <div class="popup__input-field">
+          <input type="url" id="link" name="text-link" class="popup__input popup__input_type_link" required
+            placeholder="Ссылка на картинку"><span id="link-error" class="error">Введите адрес сайта</span>
+        </div>
+        <button type="submit"
+          class="button popup__button popup__button-add popup__button_valid popup__button_invalid">Сохранить</button>
+      </form>
+    </div>
+  </div>
+
+  <!--5. Блок popup image -->
+  <div class="popup popup_type_image">
+    <div class="popup__content-image">
+      <button type="button" class="popup__delete-button"><img src="<%=require('./images/close-icon.svg')%>"
+          alt="Закрытие попапа" class="popup__close-icon"></button>
+      <img src="#" alt="" class="popup__image">
+      <h3 class="popup__title-image">Новое место</h3>
+    </div>
+  </div>
+
+  <!--6. Блок popup card-delete -->
+  <div class="popup popup_type_card-delete">
+    <div class="popup__content-card-delete">
+      <button type="button" class="popup__close-card-delete">"><img src="<%=require('./images/close-icon.svg')%>"
+          alt="Закрытие попапа" class="popup__close-icon"></button>
+      <h2 class="popup__title">Вы уверены?</h2>
+      <button type="submit" class="button popup__button popup__button-card-delete popup__button_valid">Да</button>
+      </form>
+    </div>
+  </div>
+
+  <!--7. Блок popup avatar -->
+  <div class="popup popup_type_avatar">
+    <div class="popup__content-avatar">
+      <button type="button" class="popup__close-avatar"><img src="<%=require('./images/close-icon.svg')%>"
+          alt="Закрытие попапа" class="popup__close-icon"></button>
+      <h2 class="popup__title">Обновить аватар</h2>
+      <form class="popup__form popup__form-avatar" name="popup-form-avatar">
+        <div class="popup__input-field">
+          <input type="url" id="avatar" name="text-link" class="popup__input popup__input_type_link" required
+            placeholder="Ссылка на картинку"><span id="avatar-error" class="error">Введите адрес фотографии</span>
+        </div>
+        <button type="submit"
+          class="button popup__button popup__button-avatar popup__button_valid popup__button_invalid">Сохранить</button>
+      </form>
+    </div>
+  </div>
+
+  <!--8. Блок template -->
+  <template class="element-template element-template_type_default">
+    <div class="element__card">
+      <button type="button" class="element__delete-button"></button>
+      <img src="#" alt="" class="element__photo">
+      <div class="element__description">
+        <h2 class="element__title"></h2>
+        <div class="element__number">
+          <button type="button" class="element__heart"></button>
+          <span class="element__heart-number">0</span>
+        </div>
+      </div>
+    </div>
+  </template>
+  <!-- <script type="module" src="./pages/index.js"></script>
+  <script type="module" src="./components/Api.js"></script>
+  <script type="module" src="./components/Card.js"></script>
+  <script type="module" src="./components/FormValidator.js"></script>
+  <script type="module" src="./components/PopupWithForm.js"></script>
+  <script type="module" src="./components/PopupWithImage.js"></script>
+  <script type="module" src="./components/Section.js"></script>
+  <script type="module" src="./components/UserInfo.js"></script>
+  <script type="module" src="./utils/constants.js"></script>
+  <script type="module" src="./utils/initialcards.js"></script> -->
+</body>
+
+</html>
