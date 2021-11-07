@@ -1,0 +1,5 @@
+.error {
+    display: block;
+    padding-top: 10px;
+    color: red;
+}
